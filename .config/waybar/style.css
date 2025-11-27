@@ -1,0 +1,128 @@
+@import "macchiato.css";
+
+* {
+    font-family: IosevkaTerm Nerd Font, monospace;
+    font-size: 16px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#clock {
+    /* font-family: Major Mono Display; */
+    background-color: transparent;
+    color: @teal;
+    padding-left: 0px;
+}
+
+#workspaces button.active {
+    color: @pink;
+}
+
+
+#workspaces button.urgent {
+    background-color: @color6;
+}
+
+#workspaces {
+    padding: 0px;
+    padding-bottom: 3px;  /* Reduce padding for tighter spacing */
+}
+
+#workspaces button {
+    background: transparent;
+    color: @subtext1;
+    padding-left: 5px;  /* Reduce padding for tighter spacing */
+    padding-right: 5px;  /* Reduce padding for tighter spacing */
+    min-width: 10px;
+}
+
+
+#taskbar {
+    background-color: transparent;
+    padding-bottom: 2px;
+}
+
+#taskbar button {
+    background: transparent;
+    color: @subtext1;
+    padding: 0 1px;  /* Reduce padding for tighter spacing */
+    margin: 0;       /* Remove any margin */
+    min-width: 10px; /* Set minimum width if needed */
+}
+
+
+#taskbar button:hover {
+    background-color: @pink;
+}
+
+#taskbar button.focused {
+    background-color: @pink;
+}
+
+
+
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#custom-deadbeef,
+#tray,
+#mode,
+#idle_inhibitor,
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0px;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#tray {
+    background-color: transparent;
+    color: @subtext1;
+    padding-left: 0px;
+    padding-bottom: 2px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @blue;
+}
+
+#language {
+    color: @pink;
+    font-size: 16px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+#custom-power {
+    font-size: 18px;
+    color: @subtext1;
+    /* padding-right: 3px; */
+}
+
+
+#custom-power:hover {
+    color: @peach;
+}

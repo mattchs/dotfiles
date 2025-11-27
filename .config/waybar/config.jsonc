@@ -1,0 +1,77 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "spacing": 5, // Gaps between modules (4px)
+    "margin-top": 2,
+    "margin-bottom": -6,
+    "margin-left": 5, 
+    "margin-right": 5,
+    "modules-left": [
+        // "niri/language",
+        "niri/workspaces"
+    ],
+    "modules-center": [
+        "wlr/taskbar"
+    ],
+    "modules-right": [
+        "tray",
+        "custom/power",
+        "clock"
+    ],
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8,
+        "reverse-direction": true
+    },
+    "clock": {
+        "format": "{:%H%M}",
+        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%a %Y-%m-%d}",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos": "left",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#91d7e3'>{}</span>",
+                // "days": "<span color='#ecc6d9'>{}</span>",
+                "weeks": "<span color='#99ffdd'>{}</span>",
+                "weekdays": "<span color='#ffcc66'>{}</span>",
+                "today": "<span color='#fc3087'><b>{}</b></span>"
+            }
+        }
+    },
+    "custom/power": {
+        "format": "O",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/powermenu.xml", // Menu file in resources folder
+        "menu-actions": {
+            "shutdown": "loginctl poweroff",
+            "reboot": "loginctl reboot",
+            "suspend": "loginctl suspend",
+            "hibernate": "loginctl hibernate"
+        }
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 18,
+        "spacing": 5,
+        "on-click": "activate",
+        "tooltip": true,
+        "tooltip-format": "{title} | {app_id}"
+    },
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            // Icons by state
+            "active": "",
+            "default": ""
+        },
+        "disable-click": true
+    },
+    // "niri/language": {
+    //     "format": "{shortDescription}"
+    // }
+}
