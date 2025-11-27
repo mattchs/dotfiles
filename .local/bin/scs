@@ -1,0 +1,3 @@
+#!/bin/env nu
+
+sh -c "grim -g \"$(slurp u-o -r -c '#ff0000ff')\" - | satty --copy-command wl-copy --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-\"$(date '+%Y%m%d-%H:%M:%S')\".png"

@@ -1,0 +1,6 @@
+# ~/.config/satty/config.toml
+
+[general]
+fullscreen = true
+copy-command = "wl-copy"
+output-filename = "~/Pictures/Screenshots/satty-%Y%m%d-%H:%M:%S.png"
