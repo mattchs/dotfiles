@@ -19,3 +19,4 @@
 
 
 oh-my-posh init nu --config '/home/dash/.config/oh-my-posh/zen.toml'
+source $"($nu.home-path)/.cargo/env.nu"
