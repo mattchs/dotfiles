@@ -1,5 +1,6 @@
 -- Tmux
 vim.opt.termguicolors = true
+vim.opt.background = "dark"  -- or "light"
 
 vim.opt.expandtab = true -- Convert tabs to spaces
 vim.opt.shiftwidth = 4 -- Amount to indent with << and >>
