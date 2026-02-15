@@ -12,5 +12,3 @@ Using `.stow-local-ignore` to ignore files and directories.
 1. Install stow
 1. Clone this repo to `$env.HOME` 
 1. `cd $"($env.HOME)/dotfiles" & stow .`
-
-

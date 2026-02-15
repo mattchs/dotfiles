@@ -29,7 +29,7 @@ return {
       preset = "none",
       ["<tab>"] = { "select_next", "fallback" },
       ["<S-tab>"] = { "select_prev", "fallback" },
-      ["<Enter>"] = { "accept", "fallback" },
+      ["<C-z>"] = { "accept", "fallback" },
     },
 
     appearance = {
