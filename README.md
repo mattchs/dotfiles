@@ -2,13 +2,13 @@
 
 ### How stow works
 
-Given `/path/to/dir`, `stow .` will symlink `dir` to `$env.HOME`: `/home/dash/dotfiles/.config` will be symlinked to `$env.HOME/.config`.
+Given `/path/to/.`, `stow .` will symlink `.` to `$env.HOME`. e.g. if `pwd` is `/home/dash/dotfiles` and we do `stow .` then `/home/dash/dotfiles/.config` will be symlinked to `$env.HOME/.config`.
 
-Using `.stow-local-ignore` to ignore files and directories.
+Use `.stow-local-ignore` to ignore files and directories.
 
 
-### Using
+### Use this repo
 
-1. Install stow
-1. Clone this repo to `$env.HOME` 
-1. `cd $"($env.HOME)/dotfiles" & stow .`
+1. Install `stow`
+1. Clone this repo to `$env.HOME`
+1. `cd $"($env.HOME)/dotfiles"; stow .`
