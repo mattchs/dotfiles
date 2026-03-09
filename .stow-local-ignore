@@ -6,3 +6,4 @@ README.md
 LICENSE
 .project
 .config/nushell/history.txt
+.config/ngrok/ngrok.yml

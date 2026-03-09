@@ -2,3 +2,4 @@
 .config/oh-my-posh/zen.toml.bak
 images
 .config/nvim/lazy-lock.json
+.config/ngrok/*.*
