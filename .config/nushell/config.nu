@@ -45,3 +45,5 @@ source ~/.asdf/completions/nushell.nu
 def live-server [] {
     browser-sync start --server --files "*.html, *.css, *.js"
 }
+
+source ~/.zoxide.nu
