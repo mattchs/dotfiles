@@ -1,0 +1,44 @@
+# #!/bin/bash
+# # Fuzzel password selector for Wayland
+#
+# PASSWORD_STORE_DIR="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+#
+# SELECTED=$(find "$PASSWORD_STORE_DIR" -name "*.gpg" \
+#     | sed "s|$PASSWORD_STORE_DIR/||g" \
+#     | sed 's/\.gpg$//g' \
+#     | fuzzel --dmenu --prompt "🔑 ")
+#
+# if [ -n "$SELECTED" ]; then
+#     pass -c "$SELECTED"
+#     notify-send "🔑 Password Manager" "Copied: $SELECTED\nClears in 45s"
+# fi
+#
+#
+#!/bin/bash
+# Fuzzel password selector for Wayland
+
+PASSWORD_STORE_DIR="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+
+SELECTED=$(find "$PASSWORD_STORE_DIR" -name "*.gpg" \
+    | sed "s|$PASSWORD_STORE_DIR/||g" \
+    | sed 's/\.gpg$//g' \
+    | fuzzel --dmenu --prompt "🔑 ")
+
+if [ -n "$SELECTED" ]; then
+    # Force GPG to use graphical pinentry
+    export GPG_TTY=$(tty)
+
+    # Get password and copy to clipboard using wl-clipboard
+    PASSWORD=$(pass show "$SELECTED" | head -n 1)
+
+    if [ -n "$PASSWORD" ]; then
+        # Copy to Wayland clipboard
+        echo -n "$PASSWORD" | wl-copy
+        notify-send "🔑 Password Manager" "Copied: $SELECTED\nClears in 45s"
+
+        # Clear clipboard after 45 seconds
+        (sleep 45 && wl-copy -c) &
+    else
+        notify-send "🔑 Password Manager" "Failed to get password" --urgency=critical
+    fi
+fi

@@ -420,7 +420,7 @@ binds {
     Mod+T { spawn "footclient"; }
     Mod+R { spawn "fuzzel"; }
     Mod+F { spawn "thunar"; }
-
+    Mod+P { spawn "fuzzel-pass";}
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
