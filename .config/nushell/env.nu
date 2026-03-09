@@ -53,20 +53,7 @@ $env.FZF_DEFAULT_OPTS = "
 $env.MESA_LOADER_DRIVER_OVERRIDE = "radeonsi"
 $env.AMD_VULKAN_ICD = "RADV"
 
-
-
-# Load opam environment variables
-# This parses the PowerShell output of `opam env` and loads it into the current Nu session.
-let opam_env_output = (opam env --shell=powershell | lines)
-
-for line in $opam_env_output {
-  # Check if the line matches the expected format, e.g., "$env:VAR_NAME = 'value';"
-  if ($line =~ '^\$env:(?<key>[a-zA-Z_]+) = ''(?<val>.*?)'';?$') {
-    # Extract key and value and load into environment
-    load-env { ($line.key): ($line.val) }
-  }
-}
-
+load-env (opam env --switch=base --shell=bash | lines | parse "export {key}={value}" | upsert value { |row| $row.value | str trim -c "'" } | reduce -f {} { |it, acc| $acc | insert $it.key $it.value })
 
 # Load ENVs for Path
 $env.GHCUP_INSTALL_BASE_PREFIX = '/home/dash'
@@ -74,7 +61,6 @@ $env.GOBIN = '/home/dash/go/bin'
 $env.GOROOT = '/usr/local/go'
 $env.PNPM_HOME = "/home/dash/.local/share/pnpm"
 $env.BUN_INSTALL = "/home/dash/.bun"
-
 
 $env.PATH ++= [
   '/home/dash/.local/bin',
