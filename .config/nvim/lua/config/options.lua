@@ -1,6 +1,6 @@
 -- Tmux
 vim.opt.termguicolors = true
-vim.opt.background = "dark"  -- or "light"
+vim.opt.background = "dark" -- or "light"
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.expandtab = true -- Convert tabs to spaces
