@@ -417,7 +417,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T { spawn "footclient"; }
+    Mod+Return { spawn "footclient"; }
     Mod+R { spawn "fuzzel"; }
     Mod+F { spawn "thunar"; }
     Mod+P { spawn "fuzzel-pass";}
@@ -498,6 +498,8 @@ binds {
 
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
+    Mod+T              { focus-workspace-down; }
+    Mod+C              { focus-workspace-up; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
@@ -505,6 +507,8 @@ binds {
 
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+T         { move-workspace-down; }
+    Mod+Shift+C         { move-workspace-up; }
 
     // You can bind mouse wheel scroll ticks using the following syntax.
     // These binds will change direction based on the natural-scroll setting.
@@ -585,7 +589,7 @@ binds {
     Mod+Shift+U { maximize-column; }
     Mod+U { expand-column-to-available-width; }
 
-    Mod+C { center-column; }
+    // Mod+C { center-column; }
 
     // Finer width adjustments.
     // This command can also:
