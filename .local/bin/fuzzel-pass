@@ -1,21 +1,5 @@
 # #!/bin/bash
 # # Fuzzel password selector for Wayland
-#
-# PASSWORD_STORE_DIR="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
-#
-# SELECTED=$(find "$PASSWORD_STORE_DIR" -name "*.gpg" \
-#     | sed "s|$PASSWORD_STORE_DIR/||g" \
-#     | sed 's/\.gpg$//g' \
-#     | fuzzel --dmenu --prompt "🔑 ")
-#
-# if [ -n "$SELECTED" ]; then
-#     pass -c "$SELECTED"
-#     notify-send "🔑 Password Manager" "Copied: $SELECTED\nClears in 45s"
-# fi
-#
-#
-#!/bin/bash
-# Fuzzel password selector for Wayland
 
 PASSWORD_STORE_DIR="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
 

@@ -1,12 +1,10 @@
 return {
   "saghen/blink.cmp",
-  -- optional: provides snippets for the snippet source
-  -- dependencies = { 'rafamadriz/friendly-snippets' },
 
   -- use a release tag to download pre-built binaries
   version = "*",
   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  build = 'cargo build --release',
+  build = "cargo build --release",
   -- If you use nix, you can build from source using latest nightly rust with:
   -- build = 'nix run .#build-plugin',
 
@@ -27,8 +25,8 @@ return {
     -- See :h blink-cmp-config-keymap for defining your own keymap
     keymap = {
       preset = "none",
-      ["<tab>"] = { "select_next", "fallback" },
-      ["<S-tab>"] = { "select_prev", "fallback" },
+      ["<tab>"] = { "select_next", "snippet_forward", "fallback" },
+      ["<S-tab>"] = { "select_prev", "snippet_backward", "fallback" },
       ["<C-z>"] = { "accept", "fallback" },
     },
 
@@ -44,6 +42,7 @@ return {
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
+    snippets = { preset = "mini_snippets" },
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
     },

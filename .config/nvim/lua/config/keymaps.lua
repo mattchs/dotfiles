@@ -7,3 +7,6 @@ vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Write to the current fi
 vim.keymap.set("n", "<leader>cf", function()
   require("conform").format({ lsp_format = "fallback" })
 end, { desc = "Format current file" })
+
+vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true, silent = true, desc = "Switch to left window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Switch to right window" })

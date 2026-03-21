@@ -47,3 +47,5 @@ def live-server [] {
 }
 
 source ~/.zoxide.nu
+
+alias lls = eza --color-scale --icons=always -a -l

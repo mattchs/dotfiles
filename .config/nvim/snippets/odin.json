@@ -1,0 +1,11 @@
+{
+  "main proc": {
+    "prefix": "main",
+    "body": [
+      "main :: proc() {",
+      "  $1",
+      "}$2"
+    ],
+    "description": "Main procedure"
+  }
+}

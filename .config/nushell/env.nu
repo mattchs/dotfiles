@@ -53,7 +53,7 @@ $env.FZF_DEFAULT_OPTS = "
 $env.MESA_LOADER_DRIVER_OVERRIDE = "radeonsi"
 $env.AMD_VULKAN_ICD = "RADV"
 
-load-env (opam env --switch=base --shell=bash | lines | parse "export {key}={value}" | upsert value { |row| $row.value | str trim -c "'" } | reduce -f {} { |it, acc| $acc | insert $it.key $it.value })
+load-env (opam env --switch=cs3110 --shell=bash | lines | parse "export {key}={value}" | upsert value { |row| $row.value | str trim -c "'" } | reduce -f {} { |it, acc| $acc | insert $it.key $it.value })
 
 # Load ENVs for Path
 $env.GHCUP_INSTALL_BASE_PREFIX = '/home/dash'

@@ -421,6 +421,7 @@ binds {
     Mod+R { spawn "fuzzel"; }
     Mod+F { spawn "thunar"; }
     Mod+P { spawn "fuzzel-pass";}
+    Mod+S { spawn "fuzzel-spotify";}
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.

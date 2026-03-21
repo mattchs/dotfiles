@@ -1,0 +1,26 @@
+#!/bin/sh
+
+CURRENT_VOL=$(playerctl -p spotify volume 2>/dev/null | awk '{print int($1 * 100)}')
+OPTIONS="󰐊 Play/Pause [pp]\n󰒭 Next Track [pn]\n󰒮 Previous Track [pv]\n󰓃 Working Volume\n Volume UP   +10% (Now: $CURRENT_VOL%)\n Volume DOWN -10% (Now: $CURRENT_VOL%)"
+
+CHOICE=$(echo "$OPTIONS" | fuzzel --dmenu  --prompt="🎵 ")
+
+# case "$CHOICE" in
+#     "󰐊 Play/Pause [pp]")         playerctl -p ncspot play-pause ;;
+#     "󰒮 Previous Track [pv]")     playerctl -p ncspot previous ;;
+#     "󰒭 Next Track [pn]")         playerctl -p ncspot next ;;
+#     "󰓃 Working Volume")     playerctl -p ncspot volume 0.6 ;;
+#     " Volume UP   +10%"*)  playerctl -p ncspot volume 0.1+ ;;
+#     " Volume DOWN -10%"*)  playerctl -p ncspot volume 0.1- ;;
+#     *) exit 1 ;;
+# esac
+
+case "$CHOICE" in
+    "󰐊 Play/Pause [pp]")         playerctl -p spotify play-pause ;;
+    "󰒮 Previous Track [pv]")     playerctl -p spotify previous ;;
+    "󰒭 Next Track [pn]")         playerctl -p spotify next ;;
+    "󰓃 Working Volume")     playerctl -p spotify volume 0.6 ;;
+    " Volume UP   +10%"*)  playerctl -p spotify volume 0.1+ ;;
+    " Volume DOWN -10%"*)  playerctl -p spotify volume 0.1- ;;
+    *) exit 1 ;;
+esac
