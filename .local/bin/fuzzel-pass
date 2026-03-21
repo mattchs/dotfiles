@@ -1,5 +1,5 @@
-# #!/bin/bash
-# # Fuzzel password selector for Wayland
+#!/bin/bash
+# Fuzzel password selector for Wayland
 
 PASSWORD_STORE_DIR="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
 
