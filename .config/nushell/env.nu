@@ -72,3 +72,5 @@ $env.PATH ++= [
 ]
 
 $env.PATH = ($env.PATH | split row (char esep) | uniq)
+
+
