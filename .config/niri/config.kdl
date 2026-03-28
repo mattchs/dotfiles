@@ -7,7 +7,7 @@
 // Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 cursor {
-    xcursor-theme "Adwaita"
+    xcursor-theme "Bibata-Modern-Ice"
     xcursor-size 24
 }
 
@@ -422,6 +422,7 @@ binds {
     Mod+F { spawn "thunar"; }
     Mod+P { spawn "fuzzel-pass";}
     Mod+S { spawn "fuzzel-spotify";}
+    Mod+G { spawn "fuzzel-char";}
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
