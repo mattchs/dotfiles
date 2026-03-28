@@ -176,7 +176,9 @@ return {
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`ts_ls`) will work just fine
-      ols = {},
+      ols = {
+        rootPatterns = { "ols.json" },
+      },
       ocamllsp = {},
       elixirls = {},
       purescriptls = {},

@@ -1,11 +1,26 @@
 {
   "main proc": {
-    "prefix": "main proc",
+    "prefix": "main",
     "body": [
       "main :: proc() {",
       "\t$0",
       "}"
     ],
     "description": "Main procedure"
+  },
+  "idomatic memory allocation": {
+    "prefix": "malloc",
+    "body": ["allocator := context.allocator, loc := #caller_location"],
+    "description": "idiomatic odin for dynamic memory allocation"
+  },
+  "context temp allocator": {
+    "prefix": "temp_allocator",
+    "body": ["context.temp_allocator"],
+    "description": "temporary allocator"
+  },
+  "defer free all temp allocator": {
+    "prefix": "free temp_allocator",
+    "body": ["defer free_all(context.temp_allocator)"],
+    "description": "defer free all temporary allocator"
   }
 }

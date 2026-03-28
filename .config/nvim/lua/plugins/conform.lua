@@ -7,6 +7,7 @@ return {
       lsp_format = "fallback", -- Use LSP formatting if no conform formatters are found
     },
     formatters_by_ft = {
+      odin = { "ols" },
       lua = { "stylua" },
       -- Conform will run multiple formatters sequentially
       -- python = { "isort", "black" },
