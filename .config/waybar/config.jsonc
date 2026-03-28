@@ -5,7 +5,7 @@
     "spacing": 5, // Gaps between modules (4px)
     "margin-top": 2,
     "margin-bottom": -6,
-    "margin-left": 5, 
+    "margin-left": 5,
     "margin-right": 5,
     "modules-left": [
         // "niri/language",
@@ -43,7 +43,7 @@
         }
     },
     "custom/power": {
-        "format": "O",
+        "format": "󰐥",
         "tooltip": false,
         "menu": "on-click",
         "menu-file": "$HOME/.config/waybar/powermenu.xml", // Menu file in resources folder
