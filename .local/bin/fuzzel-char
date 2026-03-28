@@ -1,0 +1,105 @@
+#!/bin/bash
+# Fuzzel Greek alphabet selector for Wayland
+
+declare -A GREEK=(
+    # Lowercase
+    ["alpha"]="α"
+    ["beta"]="β"
+    ["gamma"]="γ"
+    ["delta"]="δ"
+    ["epsilon"]="ε"
+    ["zeta"]="ζ"
+    ["eta"]="η"
+    ["theta"]="θ"
+    ["iota"]="ι"
+    ["kappa"]="κ"
+    ["lambda"]="λ"
+    ["mu"]="μ"
+    ["nu"]="ν"
+    ["xi"]="ξ"
+    ["omicron"]="ο"
+    ["pi"]="π"
+    ["rho"]="ρ"
+    ["sigma"]="σ"
+    ["tau"]="τ"
+    ["upsilon"]="υ"
+    ["phi"]="φ"
+    ["chi"]="χ"
+    ["psi"]="ψ"
+    ["omega"]="ω"
+    # Uppercase
+    ["Alpha"]="Α"
+    ["Beta"]="Β"
+    ["Gamma"]="Γ"
+    ["Delta"]="Δ"
+    ["Epsilon"]="Ε"
+    ["Zeta"]="Ζ"
+    ["Eta"]="Η"
+    ["Theta"]="Θ"
+    ["Iota"]="Ι"
+    ["Kappa"]="Κ"
+    ["Lambda"]="Λ"
+    ["Mu"]="Μ"
+    ["Nu"]="Ν"
+    ["Xi"]="Ξ"
+    ["Omicron"]="Ο"
+    ["Pi"]="Π"
+    ["Rho"]="Ρ"
+    ["Sigma"]="Σ"
+    ["Tau"]="Τ"
+    ["Upsilon"]="Υ"
+    ["Phi"]="Φ"
+    ["Chi"]="Χ"
+    ["Psi"]="Ψ"
+    ["Omega"]="Ω"
+    # Math operators
+    ["infinity"]="∞"
+    ["partial"]="∂"
+    ["nabla"]="∇"
+    ["sum"]="∑"
+    ["product"]="∏"
+    ["integral"]="∫"
+    ["sqrt"]="√"
+    ["approx"]="≈"
+    ["noteq"]="≠"
+    ["leq"]="≤"
+    ["geq"]="≥"
+    ["plusminus"]="±"
+    ["times"]="×"
+    ["divide"]="÷"
+    ["dot"]="·"
+    ["forall"]="∀"
+    ["exists"]="∃"
+    ["element"]="∈"
+    ["notelement"]="∉"
+    ["subset"]="⊂"
+    ["superset"]="⊃"
+    ["union"]="∪"
+    ["intersection"]="∩"
+    ["emptyset"]="∅"
+    ["therefore"]="∴"
+    ["because"]="∵"
+    ["proportional"]="∝"
+    # Constant
+    ["upper latin E"]= "ℰ"
+
+)
+
+# Build the list: show "name → symbol" for easy browsing
+LIST=""
+for name in $(printf '%s\n' "${!GREEK[@]}" | sort); do
+    LIST+="${name} → ${GREEK[$name]}"$'\n'
+done
+
+SELECTED=$(printf '%s' "$LIST" | fuzzel --dmenu --prompt "🇬🇷 ")
+
+if [ -n "$SELECTED" ]; then
+    # Extract the name (everything before " → ")
+    NAME=$(echo "$SELECTED" | sed 's/ → .*//')
+    SYMBOL="${GREEK[$NAME]}"
+
+    if [ -n "$SYMBOL" ]; then
+        echo -n "$SYMBOL" | wl-copy
+        notify-send "🇬🇷 Greek Letter" "Copied: $NAME → $SYMBOL"
+    fi
+fi
