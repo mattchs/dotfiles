@@ -16,16 +16,21 @@ def fzgrep [] {
 
 
 def fzfile [] {
-  fd --type f . | fzf
+  fd --hidden --type f . | fzf
 }
 
-def fzpkg-install [] {
+def install-package [] {
   let pkgs = (
     xbps-query -Rs "*"
-    | fzf --multi --header="TAB=select, ENTER=install" --preview="xbps-query -R {2}"
     | lines
-    | each { |l| $l | parse -r '\[\*?\]\s+(\S+)' | get -o 0.capture0 }
-    | flatten
+    | where { |l| $l =~ '^\[' }
+    | str join "\n"
+    | fzf --nth=2 --multi --header="TAB=select, ENTER=install" --preview="xbps-query -m {2}"
+    | lines
+    | each { |l|
+        # field 2 is "pkgname-version_revision", xbps-query -R accepts this fine
+        $l | split row ' ' | get 1
+      }
   )
 
   if ($pkgs | is-not-empty) {
@@ -33,16 +38,26 @@ def fzpkg-install [] {
   }
 }
 
-def fzpkg-remove [] {
+
+def remove-package [] {
   let pkgs = (
-    xbps-query -l
-    | fzf --multi --header="TAB=select, ENTER=remove" --preview="xbps-query {2}"
+    xbps-query -Rs "*"
     | lines
-    | each { |l| $l | parse -r '\S+\s+(\S+)' | get -o 0.capture0 }
-    | flatten
+    | where { |l| $l =~ '^\[' }
+    | str join "\n"
+    | fzf --nth=2 --multi --header="TAB=select, ENTER=install" --preview="xbps-query -m {2}"
+    | lines
+    | each { |l|
+        # field 2 is "pkgname-version_revision", xbps-query -R accepts this fine
+        $l | split row ' ' | get 1
+      }
   )
 
   if ($pkgs | is-not-empty) {
     sudo xbps-remove -R ...($pkgs)
   }
+}
+
+def edit [] {
+  nvim (fzfile)
 }

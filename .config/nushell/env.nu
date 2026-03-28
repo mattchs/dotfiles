@@ -53,7 +53,23 @@ $env.FZF_DEFAULT_OPTS = "
 $env.MESA_LOADER_DRIVER_OVERRIDE = "radeonsi"
 $env.AMD_VULKAN_ICD = "RADV"
 
-load-env (opam env --switch=cs3110 --shell=bash | lines | parse "export {key}={value}" | upsert value { |row| $row.value | str trim -c "'" } | reduce -f {} { |it, acc| $acc | insert $it.key $it.value })
+
+def --env "load-opam-env" [switch?: string] {
+    let sw = if $switch != null { ["--switch" $switch] } else { [] }
+    let env_vars = (opam env ...$sw --shell=powershell
+        | lines
+        | where { |l| ($l | str trim) != "" }
+        | parse "$env:{key} = '{value}'"
+        | reduce -f {} { |it, acc| $acc | insert $it.key $it.value })
+    load-env $env_vars
+
+    # Fix PATH: opam sets it as a string, but Nushell needs a list
+    $env.PATH = ($env.PATH | if ($in | describe) == "string" {
+        split row ":"
+    } else { $in })
+}
+
+load-opam-env "cs3110"
 
 # Load ENVs for Path
 $env.GHCUP_INSTALL_BASE_PREFIX = '/home/dash'
