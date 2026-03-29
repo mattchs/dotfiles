@@ -52,4 +52,21 @@ alias lls = eza --color-scale --icons=always -a -l
 
 source ~/.config/nushell/functions.nu
 
+$env.config.keybindings = ($env.config.keybindings | append [
+    {
+        name: complete_hint
+        modifier: control
+        keycode: char_z
+        mode: [vi_insert, emacs]
+        event: { send: HistoryHintComplete }
+    }
+    {
+        name: disable_ctrl_f
+        modifier: control
+        keycode: char_f
+        mode: [vi_insert, emacs]
+        event: null
+    }
+])
+
 
